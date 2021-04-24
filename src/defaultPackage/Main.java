@@ -1,41 +1,23 @@
 package defaultPackage;
-import java.util.Calendar;
-import java.util.Date;
-
-import interfacesPackage.Observable;
-import interfacesPackage.Observer;
-import interfacesPackage.ZooFood;
-import interfacesPackage.ZooFoodObserver;
 
 public class Main {
 
 	public static void main(String[] args) {
 		
-		Calendar calendar = Calendar.getInstance();
-		calendar.set(2022, 11, 31, 59, 59, 59);
-		Date date = calendar.getTime();
+		ChatMediator chatRoom = new ChatRoom("First room");
 		
-		// create instance of Observable
-		ZooFood zFood = new ZooFood("пастет от риба", 12.50f, date, Animal.CATS, false);
+		User firstUser = new RoomUser(chatRoom, "Ivan", "Ivanov", 25, "Plovdiv", "programmer", "Vankata");
+		User secondUser = new RoomUser(chatRoom, "Nikol", "Todorova", 35, "Plovdiv", "doctor", "Nikito");
+		User thirdUser = new RoomUser(chatRoom, "Dimitor", "Petrov", 21, "Plovdiv", "programmer", "Mitko");
 		
-		// add observers
-		Observer firstObserver = new ZooFoodObserver("Клиент 1: ");
-		zFood.addObserver(firstObserver);
-		
-		Observer secondObserver = new ZooFoodObserver("Клиент 2: ");
-		zFood.addObserver(secondObserver);
-		
-		Observer thirdObserver = new ZooFoodObserver("Клиент 3: ");
-		zFood.addObserver(thirdObserver);
-		
-		// make changes 
-		zFood.setPrice(10f);
+		firstUser.sendMessage("Hello, everyone!");
 		System.out.println();
-		
-		zFood.setName("пастет от развалена риба :D");
+		secondUser.sendMessage("Hello, cats!");
 		System.out.println();
-		
-		zFood.setSold(true);
+		thirdUser.sendMessage("I have a pet which is a cat.");
+		System.out.println();
+		firstUser.sendMessage("Hello, everyone!");
+
 	}
 
 }
