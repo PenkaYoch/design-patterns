@@ -33,10 +33,8 @@ public class ChatBotSingleton {
 		if(message.contains("cat")) {
 			list.remove(user);
 			System.out.println("This user is removed: " + user.toString());
-			return list;
-		} else {
-			return list;
-		}
+		} 
+		return list;
 	}
 	
 }
